@@ -72,6 +72,7 @@ class OpalApplication(object):
             'js/opal/services/referencedata.js',
             'js/opal/services/metadata.js',
             'js/opal/services/patient_consultation_record.js',
+            'js/opal/services/subrecord.js',
         ],
         'opal.controllers': [
             "js/opal/controllers_module.js",
