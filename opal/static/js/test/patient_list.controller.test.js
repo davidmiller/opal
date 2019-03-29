@@ -17,10 +17,6 @@ describe('PatientListCtrl', function() {
         print: function(){}
     }
 
-    var growl = {
-        success: jasmine.createSpy()
-    }
-
     beforeEach(function(){
       module('opal.controllers');
       module('opal.test');
@@ -80,7 +76,6 @@ describe('PatientListCtrl', function() {
                 $routeParams     : $routeParams,
                 $window          : fakeWindow,
                 $injector        : $$injector,
-                growl            : growl,
                 episodedata      : episodedata,
                 profile          : profile,
                 metadata         : md,

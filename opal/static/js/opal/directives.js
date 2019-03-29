@@ -301,31 +301,23 @@ directives.directive('checkForm', function(){
   }
 });
 
-directives.directive('clipboard', function(growl) {
+directives.directive('clipboard', function() {
     "use strict";
     // The MIT License (MIT)
     // Copyright (c) 2015 Sachin N
     // copied from https://github.com/sachinchoolur/ngclipboard
-    // extended to give a growl notification by default
-
-    var GROWL_SUCCESS = "Copied";
-    var GROWL_FAILURE = "Failed to copy";
 
     return {
         restrict: 'A',
         scope: {
             clipboardSuccess: '&',
             clipboardError: '&',
-            clipboardShowGrowl: '=',
         },
         link: function(scope, element) {
             var clipboard = new Clipboard(element[0]);
 
             clipboard.on('success', function(e) {
               scope.$apply(function () {
-                if(scope.clipboardShowGrowl !== false){
-                  growl.success(GROWL_SUCCESS);
-                }
                 scope.clipboardSuccess({
                   e: e
                 });
@@ -334,9 +326,6 @@ directives.directive('clipboard', function(growl) {
 
             clipboard.on('error', function(e) {
               scope.$apply(function () {
-                if(scope.clipboardShowGrowl !== false){
-                    growl.error(GROWL_FAILURE + ' ' + e);
-                }
                 scope.clipboardError({
                   e: e
                 });

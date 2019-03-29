@@ -474,17 +474,9 @@ describe('OPAL Directives', function(){
 
     describe('clipboard', function(){
         var markup = '<button class="btn btn-primary" clipboard data-clipboard-target="#content">copy</button>'
-        var growlSuccessSpy, growlErrorSpy, clipboardSpy;
+        var clipboardSpy;
         var successFn;
         var errorFn;
-        var growl;
-
-        beforeEach(inject(function(_growl_) {
-            growl = _growl_;
-            spyOn(growl, "error");
-            spyOn(growl, "success");
-        }));
-
 
         beforeEach(function(){
             clipboardSpy = jasmine.createSpy('clipboard');
@@ -503,25 +495,6 @@ describe('OPAL Directives', function(){
             spyOn(window, "Clipboard").and.returnValue({on: clipboardSpy});
             compileDirective(markup);
         })
-
-        it('should display the growl success message on success', function(){
-            successFn();
-            scope.$digest();
-            expect(growl.success).toHaveBeenCalledWith('Copied');
-        });
-
-        it('should display the growl error message on fail', function(){
-            errorFn("can't");
-            expect(growl.error).toHaveBeenCalledWith("Failed to copy can't");
-        });
-
-        it('should not display the growl error message if the directive is told not to', function(){
-            var markup = '<button class="btn btn-primary" clipboard clipboard-show-growl="false" data-clipboard-target="#content">copy</button>'
-            compileDirective(markup);
-            successFn();
-            errorFn();
-            expect(growl.success.calls.any()).toBe(false);
-        });
 
         it('should call the success function if provided', function(){
             scope.called = function(){}

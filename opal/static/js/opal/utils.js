@@ -14,7 +14,6 @@ OPAL.module = function(namespace, dependencies){
     }
 
     var implicit_dependencies = [
-        'angular-growl',
         'ngCookies',
         'mentio',
         'angulartics',
@@ -58,10 +57,6 @@ OPAL.module = function(namespace, dependencies){
 	    $interpolateProvider.startSymbol('[[');
 	    $interpolateProvider.endSymbol(']]');
     });
-
-    mod.config(['growlProvider', function(growlProvider) {
-        growlProvider.globalTimeToLive(5000);
-    }]);
 
     mod.config(['$modalProvider', function($modalProvider) {
         $modalProvider.options.size = "lg";

@@ -37,7 +37,6 @@ class OpalApplication(object):
             "js/lib/bower_components/ng-idle/angular-idle.js",
             "js/lib/bower_components/angular-local-storage/dist/angular-local-storage.js",  # noqa: E501
             "js/lib/bower_components/ment.io/dist/templates.js",
-            "js/lib/bower_components/angular-growl-v2/build/angular-growl.js",
             "js/lib/jquery-plugins/idle-timer.js",
             "js/lib/jquery-plugins/jquery.stickytableheaders.js",
             "js/lib/utils/underscore.js",
@@ -53,7 +52,6 @@ class OpalApplication(object):
         ],
         'opal.services': [
             "js/opal/services_module.js",
-            "js/opal/services/flow.js",
             "js/opal/services/user_profile.js",
             "js/opal/services/user.js",
             "js/opal/services/item.js",

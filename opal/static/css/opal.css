@@ -386,12 +386,6 @@ ul.dropdown-menu li.active .search-suggest {
   background-color: #5fa2dd;
 }
 
-/* Growl messages */
-.growl-container.growl-fixed.top-right {
-  top: 54px;
-  right: 2px;
-}
-
 /* Forms */
 
 .form-horizontal .checkbox {

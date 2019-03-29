@@ -2,7 +2,7 @@ angular.module('opal.controllers').controller(
   'PatientListCtrl', function($scope, $q, $http, $cookies,
                               $location, $routeParams,
                               $modal, $rootScope, $window, $injector,
-                              growl, Item, Episode,
+                              Item, Episode,
                               episodedata, metadata, profile, episodeLoader,
                               episodeVisibility){
 

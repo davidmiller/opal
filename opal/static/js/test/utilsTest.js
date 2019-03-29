@@ -164,7 +164,6 @@ describe("OPAL.module", function(){
 
   describe('dependency registration', function(){
     var implicit_dependencies = [
-      'angular-growl',
       'ngCookies',
       'mentio',
       'angulartics',

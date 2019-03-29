@@ -87,8 +87,7 @@ Copy to Clipboard
 </button>
 ```
 
-This is a wrapper around clipboard.js, it lets the user copy text from an element that matches the selector you pass it. It will present a growl message saying that the text has been
-copied.
+This is a wrapper around clipboard.js, it lets the user copy text from an element that matches the selector you pass it.
 
 #### fullNameForUser
 
