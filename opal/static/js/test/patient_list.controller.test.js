@@ -742,53 +742,6 @@ describe('PatientListCtrl', function() {
         });
     });
 
-    describe('removeFromMine()', function() {
-        it('should be null if readonly', function() {
-            profile.readonly = true;
-
-            var rows = _.map($scope.rows, function(episode){
-                return episode.id;
-            });
-            expect($scope.removeFromMine($scope.episode));
-            $rootScope.$apply();
-            var newRows = _.map($scope.rows, function(episode){
-                return episode.id;
-            });
-            expect(rows).toEqual(newRows);
-        });
-
-        it('should remove the mine tag', function() {
-            var selectedEpisodeId = $scope.episode.id;
-            profile.readonly = false;
-            spyOn($scope.episode.tagging[0], "save").and.returnValue({
-                then: function(fn){fn();}
-            });
-            $scope.removeFromMine($scope.episode);
-
-            // the episode should be removed from the displayed episodes
-            var displayed_episodes = _.map($scope.rows, function(episode){
-                return episode.id;
-            });
-
-            var isRemoved = !_.contains(displayed_episodes, selectedEpisodeId);
-            expect(isRemoved).toBe(true);
-        });
-
-        it('should call removeFromList', function() {
-            var selectedEpisodeId = $scope.episode.id;
-            profile.readonly = false;
-            spyOn($scope, 'removeFromList');
-            spyOn($scope.episode.tagging[0], 'save').and.returnValue({
-                then: function(f){ f() }
-            })
-            $scope.removeFromMine($scope.episode);
-            $scope.$apply();
-
-            expect($scope.removeFromList).toHaveBeenCalledWith($scope.episode.id);
-        });
-
-    });
-
     describe('newNamedItem', function(){
         it('should pass through the current scopes tags', function(){
             spyOn(episode.recordEditor, "newItem");

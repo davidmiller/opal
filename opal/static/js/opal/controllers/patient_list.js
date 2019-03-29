@@ -340,23 +340,6 @@ angular.module('opal.controllers').controller(
 		    });
 	    };
 
-        $scope.removeFromMine = function(episode){
-            if(profile.readonly){
-                return null;
-            }
-
-            var modal;
-            var tagging = episode.tagging[0];
-            editing = tagging.makeCopy();
-            editing.mine = false;
-            // console.error('calling tagging save');
-            // console.error(tagging.save);
-            tagging.save(editing).then(function(){
-                $scope.removeFromList(episode.id);
-            });
-
-        };
-
         $scope.newNamedItem = function(episode, name) {
             return episode.recordEditor.newItem(name);
         };
