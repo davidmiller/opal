@@ -23,15 +23,6 @@ Deletes all instances of lookuplist and synonym entries.
 python manage.py delete_all_lookuplists
 ```
 
-## detect_duplicates
-
-Examines patients in the system and looks for possible duplicates. Prints a report
-of patients with matching names, dates of birth or hospital numbers.
-
-```bash
-python manage.py detect_duplicates
-```
-
 ## dump_lookup_lists
 
 *Arguments*:
