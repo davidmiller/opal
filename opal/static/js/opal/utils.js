@@ -15,7 +15,6 @@ OPAL.module = function(namespace, dependencies){
 
     var implicit_dependencies = [
         'ngCookies',
-        'mentio',
         'angulartics',
         'angulartics.google.analytics',
         'LocalStorageModule',

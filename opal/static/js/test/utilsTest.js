@@ -165,7 +165,6 @@ describe("OPAL.module", function(){
   describe('dependency registration', function(){
     var implicit_dependencies = [
       'ngCookies',
-      'mentio',
       'angulartics',
       'angulartics.google.analytics',
       'LocalStorageModule'
