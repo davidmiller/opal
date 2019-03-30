@@ -63,27 +63,6 @@ describe('filters', function() {
     });
   });
 
-  describe('fromNow()', function() {
-    var fromNow;
-
-    beforeEach(function(){
-      inject(function($injector){
-        fromNow  = $injector.get('fromNowFilter');
-      });
-    });
-
-    it('should return nill if null', function() {
-      expect(fromNow(null)).toBe(undefined);
-    });
-
-    it('should return the time fromNow', function() {
-      var today = new Date(2002, 2, 22);
-      jasmine.clock().mockDate(today);
-      expect(fromNow('20/03/2002')).toEqual('2 days ago');
-    });
-
-  });
-
   describe('shortTime', function(){
     var shortTime;
 

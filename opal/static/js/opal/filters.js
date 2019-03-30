@@ -15,16 +15,6 @@ filters.filter('toMoment', function(){
 		};
 });
 
-filters.filter('fromNow', function(toMomentFilter){
-		return function(input){
-				if(!input){
-						return;
-				}
-				var momented = toMomentFilter(input);
-				return momented.fromNow();
-		};
-});
-
 filters.filter('shortTime', function(hhmmFilter){
 	return function(input){
 	  var toChange;
