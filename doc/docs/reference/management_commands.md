@@ -3,18 +3,6 @@
 Opal ships with a number of Django management commands which can be invoked with
 `python manage.py command`.
 
-## create_random_data
-
-Creates patients with randomised data.
-
-*Arguments*:
-
-* `--number` - The number of patients to create. Defaults to 100.
-
-```bash
-python manage.py create_random_data --number 3000
-```
-
 ## create_singletons
 
 Creates any subrecord singletons which are missing. This is useful when
