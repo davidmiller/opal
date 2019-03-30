@@ -69,46 +69,6 @@ filters.filter('hhmm', function(momentDateFormatFilter){
 });
 
 
-filters.filter('daysTo', function(toMomentFilter){
-    return function(first, second, withoutDays){
-				if(!first || !second){
-						return;
-				}
-
-        var start = toMomentFilter(first);
-				var diff = toMomentFilter(second).diff(start, 'days');
-
-				if(withoutDays){
-						return diff;
-				}
-				else{
-						// don't use moment.from as it abstracts to months
-						// by rounding up/down
-						if(diff === 1){
-								return "1 day";
-						}
-						else{
-								return diff + " days";
-						}
-				}
-    };
-});
-
-filters.filter('daysSince', function(daysToFilter){
-    return function(input, change, withoutDays){
-        if(!input){
-            return;
-        }
-		endDate = moment();
-
-		if(change){
-			endDate.add(change, "days");
-		}
-		return daysToFilter(input, endDate, withoutDays);
-    };
-});
-
-
 filters.filter('future', function(){
     return function(i, includeToday){
       if(!i){
