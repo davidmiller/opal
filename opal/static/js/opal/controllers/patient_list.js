@@ -63,15 +63,16 @@ angular.module('opal.controllers').controller(
       }
 	};
 
+    // TODO: Refactor / rename this
+    // this method used to call a visibility service hence the name
+    // it is now used to sort episodes and to re-set the active episode
+    // if it has been deleted.
 	$scope.getVisibleEpisodes = function() {
 	  var visibleEpisodes = [];
       var episode_list = [];
       var episodePresent;
 
-      visibleEpisodes = _.filter($scope.episodes, function(episode){
-        return episodeVisibility(episode, $scope);
-      });
-
+      visibleEpisodes = _.filter($scope.episodes, function(e){ return true });
       visibleEpisodes.sort($scope.compareEpisodes);
 
       if($scope.rows && visibleEpisodes.length){
