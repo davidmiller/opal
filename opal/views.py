@@ -11,15 +11,11 @@ from django.template import TemplateDoesNotExist
 from django.views.generic import TemplateView
 
 from opal import models
-from opal.core import application, detail, episodes
+from opal.core import detail, episodes
 from opal.core.patient_lists import PatientList, TabbedPatientListGroup
 from opal.core.subrecords import get_subrecord_from_api_name
 from opal.utils import camelcase_to_underscore
 from opal.utils.banned_passwords import banned
-
-app = application.get_app()
-
-Synonym = models.Synonym
 
 
 class PatientListTemplateView(LoginRequiredMixin, TemplateView):
