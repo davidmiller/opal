@@ -3,8 +3,7 @@ angular.module('opal.controllers').controller(
                               $location, $routeParams,
                               $modal, $rootScope, $window, $injector,
                               Item, Episode,
-                              episodedata, metadata, profile, episodeLoader,
-                              episodeVisibility){
+                              episodedata, metadata, profile, episodeLoader){
 
     $scope.ready = false;
     var version = window.version;
@@ -28,9 +27,6 @@ angular.module('opal.controllers').controller(
   	  $scope.rix = 0; // row index
       $scope._ =  _;
 
-  	  $scope.query = {
-        hospital_number: '', first_name: '', surname: '', ward: '', bed: ''
-      };
       $scope.$location = $location;
       $scope.path_base = '/list/';
       $scope.profile = profile;
@@ -153,22 +149,6 @@ angular.module('opal.controllers').controller(
         }
       };
     }
-
-	$scope.$watch('query.hospital_number', function() {
-	  $scope.rows = $scope.getVisibleEpisodes();
-	});
-
-	$scope.$watch('query.ward', function() {
-	  $scope.rows = $scope.getVisibleEpisodes();
-	});
-
-	$scope.$watch('query.bed', function() {
-	  $scope.rows = $scope.getVisibleEpisodes();
-	});
-
-	$scope.$watch('query.name', function() {
-	  $scope.rows = $scope.getVisibleEpisodes();
-	});
 
 	$scope.$on('keydown', function(event, e) {
 	  if ($rootScope.state == 'normal') {

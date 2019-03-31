@@ -4,18 +4,6 @@ angular.module('opal.services')
             var profile = this;
 
             angular.extend(profile, profiledata);
-
-            this.active_roles = function(){
-                var roles = [];
-                if(this.roles['default']){
-                    roles = angular.copy(this.roles['default']);
-                }
-                if($routeParams.slug && this.roles[$routeParams.slug]){
-                    roles = _.union(roles, this.roles[$routeParams.slug]);
-                }
-                return roles;
-            };
-
         };
 
         var load = function(){

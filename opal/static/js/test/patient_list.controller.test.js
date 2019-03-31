@@ -1,7 +1,7 @@
 describe('PatientListCtrl', function() {
     "use strict";
     var episodeData, episodeData2, metaData, patientData;
-    var Episode, Item, episode, episodeVisibility;
+    var Episode, Item, episode;
     var profile, episode2;
     var $scope, $cookies, $controller, $q, $dialog, $httpBackend;
     var $$injector;
@@ -35,7 +35,6 @@ describe('PatientListCtrl', function() {
         $httpBackend = $injector.get('$httpBackend');
         $location    = $injector.get('$location');
         $$injector   = $injector.get('$injector');
-        episodeVisibility = $injector.get('episodeVisibility');
         opalTestHelper = $injector.get('opalTestHelper');
       });
 
@@ -58,7 +57,6 @@ describe('PatientListCtrl', function() {
 
 
         episodedata = {status: 'success', data: {123: episode} };
-        episodeVisibility = jasmine.createSpy().and.callFake(episodeVisibility);
         profile = opalTestHelper.getUserProfile();
 
         metaData = opalTestHelper.getMetaData();
@@ -79,7 +77,6 @@ describe('PatientListCtrl', function() {
                 episodedata      : episodedata,
                 profile          : profile,
                 metadata         : md,
-                episodeVisibility: episodeVisibility
             });
         }
 
@@ -248,38 +245,6 @@ describe('PatientListCtrl', function() {
         });
     });
 
-    describe('watches', function() {
-
-        beforeEach(function(){
-            spyOn($scope, 'getVisibleEpisodes');
-            $httpBackend.expectGET('/api/v0.1/userprofile/').respond({});
-        });
-
-        it('should call on hosp number', function() {
-            $scope.hospital_number = 'goo';
-            $rootScope.$apply();
-            expect($scope.getVisibleEpisodes).toHaveBeenCalledWith()
-        });
-
-        it('should call on ward', function() {
-            $scope.ward = 'goo';
-            $rootScope.$apply();
-            expect($scope.getVisibleEpisodes).toHaveBeenCalledWith()
-        });
-
-        it('should call on bed', function() {
-            $scope.bed = 'goo';
-            $rootScope.$apply();
-            expect($scope.getVisibleEpisodes).toHaveBeenCalledWith()
-        });
-
-        it('should call on name', function() {
-            $scope.name = 'goo';
-            $rootScope.$apply();
-            expect($scope.getVisibleEpisodes).toHaveBeenCalledWith()
-        });
-    });
-
     describe('get visible episodes', function(){
         var episodeData3;
 
@@ -304,53 +269,13 @@ describe('PatientListCtrl', function() {
 
         it('should select the only available episode if there is no episode selected, function()', function(){
           delete $scope.episode;
-          episodeVisibility.and.callFake(function(episode){
-              return true;
-          });
           $scope.getVisibleEpisodes();
           expect($scope.episode.id).toBe(episode.id);
-        });
-
-
-        it('should select the only available episode if filtered to one', function(){
-            /*
-              so if episode visibility filters out all but one response
-              we expect that episode to now be selected
-            */
-            expect($scope.episode.id).toEqual(episodeData.id);
-
-            episodeVisibility.and.callFake(function(episode){
-                return episode.id === episode2.id || episode.id === episodeData3.id;
-            });
-
-            $scope.getVisibleEpisodes();
-
-            expect($scope.episode.id).toBe(episode2.id);
-        });
-
-        it('should maintain the same episode if its still present', function(){
-            /*
-              so if episode visibility does not filter
-              anything out, we expect the in scope episode to
-              be the same
-            */
-            expect($scope.episode.id).toEqual(episodeData.id);
-
-            episodeVisibility.and.callFake(function(episode){
-                return true;
-            });
-
-            $scope.getVisibleEpisodes();
-
-            expect($scope.episode.id).toBe(episode.id);
         });
 
         it('should not call select_episode if the episode is still present', function() {
             expect($scope.episode.id).toEqual(episodeData.id);
             spyOn($scope, 'select_episode');
-            episodeVisibility.and.callFake(function(episode){
-                return true;
-            });
             $scope.getVisibleEpisodes();
             expect($scope.select_episode.calls.count()).toBe(0);
         });
@@ -362,10 +287,6 @@ describe('PatientListCtrl', function() {
               be the same
             */
             expect($scope.episode.id).toEqual(episodeData.id);
-
-            episodeVisibility.and.callFake(function(episode){
-                return false;
-            });
 
             $scope.getVisibleEpisodes();
 
