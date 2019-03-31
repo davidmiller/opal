@@ -65,32 +65,6 @@ describe('UserProfile', function(){
 
         });
 
-        describe('has_role()', function() {
-
-            it('should be true when we have the role', function() {
-                expect(profile.has_role('doctor')).toBe(true);
-            });
-
-        });
-
-        describe('can_edit', function() {
-
-            it('should be true by default', function() {
-                expect(profile.can_edit('demographics')).toBe(true);
-            });
-
-            it('should be false when a scientist and given an arbitrary record name', function() {
-                profile.roles['default'] = ['scientist'];
-                expect(profile.can_edit('demographics')).toBe(false);
-            });
-
-            it('should be true when a scientist given the right name', function() {
-                profile.roles['default'] = ['scientist'];
-                expect(profile.can_edit('lab_test')).toBe(true);
-            });
-
-        });
-
     });
 
 });
