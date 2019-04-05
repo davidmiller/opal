@@ -14,8 +14,6 @@ class OpalApplication(object):
         'opal.upstream.deps': [
             "js/lib/modernizr.js",
             "js/lib/jquery-1.11.3/jquery-1.11.3.js",
-            "js/lib/d3/d3.js",
-            "js/lib/c3-0.4.10/c3.js",
 
             "js/lib/bower_components/angular/angular.js",
             "js/lib/bower_components/angular-route/angular-route.js",
