@@ -1,18 +1,6 @@
 describe('Utils.OPAL._run', function (){
     "use strict";
 
-    it('should reset ngProgressLite on route change error', function(){
-      var mockScope = jasmine.createSpyObj(["$on"]);
-      var ngProcessLite = jasmine.createSpyObj(['set']);
-      var mock_modal = { open: function(){} };
-      OPAL._run(mockScope, ngProcessLite, mock_modal);
-      expect(mockScope.$on).toHaveBeenCalled();
-      var runFun = mockScope.$on.calls.argsFor(2)[1];
-      expect(mockScope.$on.calls.argsFor(2)[0]).toBe('$routeChangeError');
-      runFun();
-      expect(ngProcessLite.set).toHaveBeenCalledWith(0);
-    });
-
     it('Should add open_modal to the root scope.', function () {
         var mock_scope = { $on: function(){} };
         var mock_modal = { open: function(){} };

@@ -1,7 +1,6 @@
 !(function(){
   var app = OPAL.module('opal', [
       'ngRoute',
-      'ngProgressLite',
       'opal.config',
     	'opal.filters',
     	'opal.services',

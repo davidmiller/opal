@@ -4,7 +4,7 @@ describe('EditTeamsCtrl', function(){
     var $scope, $rootScope, $httpBackend, $window, $modal, $controller;
     var Episode;
     var UserProfile;
-    var modalInstance, ngProgressLite;
+    var modalInstance;
     var episode, opalTestHelper;
 
     beforeEach(function(){
@@ -20,7 +20,6 @@ describe('EditTeamsCtrl', function(){
             $modal           = $injector.get('$modal');
             Episode          = $injector.get('Episode');
             opalTestHelper   = $injector.get('opalTestHelper');
-            ngProgressLite   = $injector.get('ngProgressLite');
         });
 
         UserProfile = opalTestHelper.getUserProfileLoader();
@@ -84,16 +83,6 @@ describe('EditTeamsCtrl', function(){
             $scope.save('close');
             $rootScope.$apply();
             expect(modalInstance.close).toHaveBeenCalledWith('close');
-        });
-
-        it('should reset the progressbar if we error', function() {
-            spyOn(ngProgressLite, 'done');
-            episode.tagging[0].save = function(a){
-                        return {then: function(fn, fn2) { fn2(); }}
-                    }
-            $scope.save('close');
-            $rootScope.$apply();
-            expect(ngProgressLite.done).toHaveBeenCalledWith()
         });
 
     });

@@ -3,7 +3,7 @@ describe('EditItemCtrl', function (){
 
     var $scope, $timeout, $modal, $httpBackend;
     var item, Item, existingEpisode, opalTestHelper;
-    var dialog, Episode, episode, ngProgressLite, $q, $rootScope;
+    var dialog, Episode, episode, $q, $rootScope;
     var $controller, controller, fakeModalInstance;
     var $analytics, metadataCopy, profile, referencedata;
 
@@ -23,7 +23,6 @@ describe('EditItemCtrl', function (){
             $httpBackend   = $injector.get('$httpBackend');
             $timeout       = $injector.get('$timeout');
             $modal         = $injector.get('$modal');
-            ngProgressLite = $injector.get('ngProgressLite');
             $rootScope     = $injector.get('$rootScope');
             $modal         = $injector.get('$modal');
             opalTestHelper = $injector.get('opalTestHelper');
@@ -54,7 +53,6 @@ describe('EditItemCtrl', function (){
             metadata      : metadataCopy,
             profile       : profile,
             episode       : episode,
-            ngProgressLite: ngProgressLite,
             referencedata : referencedata,
             $analytics    : $analytics
         });
@@ -98,18 +96,6 @@ describe('EditItemCtrl', function (){
             callArgs = episode.save.calls.mostRecent().args;
             expect(callArgs.length).toBe(1);
             expect(callArgs[0]).toBe($scope.episode);
-        });
-
-        it('should cancel the progressbar if we fail to save', function() {
-            var deferred = $q.defer();
-            spyOn(ngProgressLite, 'done');
-            spyOn(item, 'save').and.callFake(function() {
-                return deferred.promise;
-            });
-            $scope.save('save');
-            deferred.reject("Failure !!!");
-            $scope.$digest();
-            expect(ngProgressLite.done).toHaveBeenCalledWith();
         });
 
     });

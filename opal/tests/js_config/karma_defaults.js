@@ -17,7 +17,6 @@ module.exports = function(includedFiles, baseDir, coverageFiles){
       "lib/ui-bootstrap-tpls-0.14.3.js",
       "lib/angulartics-0.17.2/angulartics.min.js",
       "lib/angulartics-0.17.2/angulartics-ga.min.js",
-      'lib/ngprogress-lite/ngprogress-lite.js',
       'lib/jquery-1.11.3/jquery-1.11.3.js',
       'lib/utils/underscore.js',
       'lib/utils/showdown.js',

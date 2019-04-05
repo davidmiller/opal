@@ -39,7 +39,6 @@ class OpalApplication(object):
             "js/lib/utils/underscore.js",
             "js/lib/utils/showdown.js",
             "js/lib/utils/moment.js",
-            "js/lib/ngprogress-lite/ngprogress-lite.js",
         ],
         'opal.utils': [
             "js/opal/utils.js",
